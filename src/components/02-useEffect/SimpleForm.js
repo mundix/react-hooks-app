@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Message } from './Message';
 import './effect.css';
 
 export const SimpleForm = () => {
@@ -16,20 +17,23 @@ export const SimpleForm = () => {
     // });
 
     useEffect( () => {
-        console.log('hey!');
+        // console.log('hey!');
     }, []);
     //Los efecto se recomenda trabajr de manera individual, si queremos hacer algo cuando se carga el formulario , entonces
     // poneindo como segundo argumento un [] vacio
 
     // Para escuchar los cambios en 'formState'  se hace de esta manera.
     useEffect( () => {
-        console.log('FormState Cambio!');
+        // console.log('FormState Cambio!');
     }, [formState]);
 
     // Si quiero monitorea cuando el email cambia solamente
     useEffect( () => {
-        console.log('Email Cambio!');
-    }, [email]); // email viene de la desextructuracion
+        // console.log('Email Cambio!');
+    }, [email]); // email viene de la desextructuracion.
+
+    // Una funciona para unmount , para fase de limpiea parecido cuadno el componente de desmonta. 
+
 
     // const handleInputChange = (e) => {
     const handleInputChange = ({target}) => {
@@ -70,7 +74,7 @@ export const SimpleForm = () => {
                     onChange={ handleInputChange }
                 />
             </div>
-
+            {(name === '123') && <Message/>}
         </>
     )
 }
