@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { ShowIncrement } from './ShowIncrement';
 import '../02-useEffect/effect.css';
 
@@ -24,7 +24,12 @@ export const CallbackHook = () => {
         // [setCounter, counter], //Esto no funciona, aun asi se repite por que el counter simepre cambia, y no queremos eso
         [setCounter] // Lo que se hace es definir un arqumento y enves de counter + 1 , c = c + 1 , 
         //pero si le ponermos el arg 'num'  entonces nos e modifica   el counter 
-    )
+    );
+
+    useEffect(() => {
+        // ???
+    }, [increment]); //si no se hiciera con el useCallback este efecto se dispararia toda las veces que se renderiza 
+
 
     return (
         <div>
