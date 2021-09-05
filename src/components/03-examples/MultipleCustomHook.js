@@ -25,7 +25,7 @@ export const MultipleCustomHook = () => {
                 :
                 (
                     <div className="blockquote text-right">
-                        <p className="mb-1">
+                        <p className="mb-0">
                             {quote}
                         </p>
                         <footer className="blockquote-footer">

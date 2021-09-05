@@ -3,17 +3,18 @@ import { useState } from 'react';
 
 export const useCounter = (initialState = 10) => {
     
-    const [state, setState] = useState( initialState);
+    const [counter, setCounter] = useState( initialState);
 
-    // const increment = () => {
-    const increment = (factor = 1) => {
-        // setState( state + 1);
-        setState( state + factor);
+    const increment = () => {
+    // const increment = (factor = 1) => {
+        setState( state + 1);
+        // setState( state + factor);
     }
 
-    const decrement = (factor = 1) => {
-        // setState( state - 1);
-        setState( state - factor);
+    // const decrement = (factor = 1) => {
+    const decrement = () => {
+        setState( state - 1);
+        // setState( state - factor);
     }
 
     const reset = () => {
@@ -22,7 +23,7 @@ export const useCounter = (initialState = 10) => {
 
     // se peude refresar un objeto por si necesito incrementar o decrementar 
     return  {
-        state,
+        counter,
         increment,
         decrement,
         reset
