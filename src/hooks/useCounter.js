@@ -2,18 +2,18 @@ import { useState } from 'react';
 //un custom hook no es mas que una simple function 
 
 export const useCounter = (initialState = 10) => {
-    
-    const [counter, setCounter] = useState( initialState);
+
+    const [counter, setCounter] = useState(initialState);
 
     const increment = () => {
-    // const increment = (factor = 1) => {
-        setCounter( counter + 1);
+        // const increment = (factor = 1) => {
+        setCounter(counter + 1);
         // setState( state + factor);
     }
 
     // const decrement = (factor = 1) => {
     const decrement = () => {
-        setCounter( counter - 1);
+        setCounter(counter - 1);
         // setState( state - factor);
     }
 
@@ -22,7 +22,7 @@ export const useCounter = (initialState = 10) => {
     }
 
     // se peude refresar un objeto por si necesito incrementar o decrementar 
-    return  {
+    return {
         counter,
         increment,
         decrement,
