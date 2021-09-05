@@ -1,9 +1,11 @@
 import React from 'react';
+import { useCounter } from '../../hooks/useCounter';
 import { useFetch } from '../../hooks/useFetch';
 import '../02-useEffect/effect.css';
 
 export const MultipleCustomHook = () => {
 
+    const {counter, increment} = useCounter(1);
     // const state = useFetch('https://breakingbadapi.com/api/quotes');
     const {loading, data, error} = useFetch('https://breakingbadapi.com/api/quotes');
 
