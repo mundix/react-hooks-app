@@ -11,6 +11,8 @@ export const MemoHook = () => {
     const [show, setShow] = useState(true);
 
     //Etamos pasando nuetra funcinoa procesoPesado ,  para que le memorize este call back en general.
+    // No se dispara de neuvo cuadno presiono el show/hide. pero si cambia el counter si se ejecuta , por que
+    //esta haciedno referencia a counter, parecido al useEffect 
     const memoProcesoPesado = useMemo(() => procesoPesado(counter), [counter]);
 
     return (
