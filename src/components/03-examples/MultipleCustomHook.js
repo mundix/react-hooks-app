@@ -7,10 +7,10 @@ export const MultipleCustomHook = () => {
 
     const {counter, increment} = useCounter(1);
     // const state = useFetch('https://breakingbadapi.com/api/quotes');
-    const {loading, data, error} = useFetch('https://breakingbadapi.com/api/quotes');
 
+    // const {loading, data, error} = useFetch('https://breakingbadapi.com/api/quotes/1');
+    const {loading, data, error} = useFetch(`https://breakingbadapi.com/api/quotes/${counter}`);
     const {author, quote} = !!data && data[0];
-    console.log(author, quote);
 
     return (
         <div>
@@ -36,6 +36,13 @@ export const MultipleCustomHook = () => {
                     </div>
                 )
             }
+
+            <button 
+                className="btn btn-primary"
+                onClick={increment}
+            >
+                Siguiente Quote
+            </button>
             
            
         </div>
