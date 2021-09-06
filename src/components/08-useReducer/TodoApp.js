@@ -12,11 +12,13 @@ const initialState = [{
 
 const init = () => {
     // Otra cosa que podemos hacer es guardar en el localStorage
-    return [{
-        id: new Date().getTime(),
-        desc: 'Aprender React',
-        done: false
-    }]
+    // return [{
+    //     id: new Date().getTime(),
+    //     desc: 'Aprender React',
+    //     done: false
+    // }]
+    // ahroa voy a retornar un localSTorage
+    return JSON.parse( localStorage.getItem('todos')) || []; 
 }
 
 //El reducer puede crease en  un archivo independiente 'TodoReducer.js'
