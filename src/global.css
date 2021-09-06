@@ -1,7 +1,19 @@
-body , ul, li, lo{
+body , ul, li, lo, a{
     background-color: slategrey !important;
     color: white !important;
 }
+
+
+
+a {
+    font-size: 22px;
+    text-decoration: underline;
+}
+a:hover{
+    text-decoration: none;
+    color:tomato !important;
+}
+
 * {
     font-size: 18px;
 }
