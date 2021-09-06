@@ -18,7 +18,7 @@ const init = () => {
     //     done: false
     // }]
     // ahroa voy a retornar un localSTorage
-    return JSON.parse( localStorage.getItem('todos')) || []; 
+    return JSON.parse(localStorage.getItem('todos')) || [];
 }
 
 //El reducer puede crease en  un archivo independiente 'TodoReducer.js'
@@ -41,8 +41,8 @@ export const TodoApp = () => {
 
     // Lio que quiero hacer es grabar ene l localStorage cuando los todo Cambian, puedo usar un useEffect 
     useEffect(() => {
-       //si los todos cambian tengo que volver a grabar en el localStorage
-       localStorage.setItem('todo', JSON.stringify(todos));
+        //si los todos cambian tengo que volver a grabar en el localStorage
+        localStorage.setItem('todo', JSON.stringify(todos));
     }, [todos]);
 
     // 
@@ -54,7 +54,7 @@ export const TodoApp = () => {
         dispatch(action);
     }
 
-    const handleToogle = ( todoId ) => {
+    const handleToogle = (todoId) => {
         dispatch({
             type: 'toggle',
             payload: todoId
@@ -104,16 +104,16 @@ export const TodoApp = () => {
                                     key={todo.id}
                                     className='list-group-item'
                                 >
-                                    <p 
-                                        className={ `${todo.done && 'complete'}` }
-                                        onClick={ () => handleToogle(todo.id)}
+                                    <p
+                                        className={`${todo.done && 'complete'}`}
+                                        onClick={() => handleToogle(todo.id)}
 
                                     > {i + 1} - {todo.desc}</p>
-                                    <button 
+                                    <button
                                         className="btn btn-danger"
                                         // Como necesito pasar argumento , se envia un callback y la funciona con el argumento
-                                        onClick={ () => handleDelete(todo.id)}
-                                        >
+                                        onClick={() => handleDelete(todo.id)}
+                                    >
                                         Borrad
                                     </button>
                                 </li>
