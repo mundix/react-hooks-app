@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { TodoReducer } from './TodoReducer';
 import { useForm } from '../../hooks/useForm';
 
@@ -36,6 +36,12 @@ export const TodoApp = () => {
     const [{ description }, handleInputChange, reset] = useForm({
         description: ''
     });
+
+    // Lio que quiero hacer es grabar ene l localStorage cuando los todo Cambian, puedo usar un useEffect 
+    useEffect(() => {
+       //si los todos cambian tengo que volver a grabar en el localStorage
+       localStorage.setItem('todo', JSON.stringify(todos));
+    }, [todos]);
 
     // console.log(formValues);
     // console.log(description);
