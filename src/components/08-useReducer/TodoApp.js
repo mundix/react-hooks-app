@@ -45,6 +45,22 @@ export const TodoApp = () => {
        localStorage.setItem('todo', JSON.stringify(todos));
     }, [todos]);
 
+    // 
+    const handleDelete = (todoId) => {
+        const action = {
+            type: 'delete',
+            payload: todoId
+        }
+        dispatch(action);
+    }
+
+    const handleToogle = ( todoId ) => {
+        dispatch({
+            type: 'toggle',
+            payload: todoId
+        })
+    }
+
     // console.log(formValues);
     // console.log(description);
     // Como hago para borrar el formulario , en el use form crear un metodo reset = () => 
@@ -83,13 +99,21 @@ export const TodoApp = () => {
                 <div className="col-7">
                     <ul className='list-group list-group-flush'>
                         {
-                            todos.map(todo => (
+                            todos.map((todo, i) => (
                                 <li
                                     key={todo.id}
                                     className='list-group-item'
                                 >
-                                    <p className="text-center">{todo.desc}</p>
-                                    <button className="btn btn-danger">
+                                    <p 
+                                        className={ `${todo.done && 'complete'}` }
+                                        onClick={ () => handleToogle(todo.id)}
+
+                                    > {i + 1} - {todo.desc}</p>
+                                    <button 
+                                        className="btn btn-danger"
+                                        // Como necesito pasar argumento , se envia un callback y la funciona con el argumento
+                                        onClick={ () => handleDelete(todo.id)}
+                                        >
                                         Borrad
                                     </button>
                                 </li>
