@@ -2,6 +2,9 @@ body , ul, li, lo{
     background-color: slategrey !important;
     color: white !important;
 }
+* {
+    font-size: 18px;
+}
 /* div {
     border:  1px solid rgb(206, 221, 233) !important;
 } */

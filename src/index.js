@@ -13,9 +13,12 @@ import ReactDOM from 'react-dom';
 // import { MemoHook } from './components/06-memos/MemoHook';
 // import { CallbackHook } from './components/06-memos/CallbackHook';
 // import { Padre } from './components/07-tarea-memo/Padre';
-import { TodoApp } from './components/08-useReducer/TodoApp';
+// import { TodoApp } from './components/08-useReducer/TodoApp';
+import { MainApp } from './components/09-useContext/MainApp';
 import './global.css';
 
+// Vamos a trabjar con rauters : https://reactrouter.com/web/guides/quick-start 
+// hay que instlar este package 
 
 ReactDOM.render(
   // <HookApp/>,
@@ -31,8 +34,10 @@ ReactDOM.render(
   // <MemoHook/>,
   // <CallbackHook/>,
   // <Padre/>,
-  <TodoApp/>,
+  // <TodoApp/>,
+  <MainApp/>,
   document.getElementById('root')
 );
 
 // import './components/08-useReducer/intro-reducer';
+// Que resuelve el useContext => es para comunicarse entre padre hijos nieto componentes y puede hacer mas componentes.
