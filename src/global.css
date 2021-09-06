@@ -3,5 +3,5 @@ body , ul, li, lo{
     color: white !important;
 }
 div {
-    border:  1px solid rgb(206, 221, 233) !important;
+    /* border:  1px solid rgb(206, 221, 233) !important; */
 }
