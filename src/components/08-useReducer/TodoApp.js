@@ -2,8 +2,11 @@ import React, { useEffect, useReducer } from 'react';
 import { TodoReducer } from './TodoReducer';
 import { useForm } from '../../hooks/useForm';
 
-import './styles.css';
 import { TodoList } from './TodoList';
+import { TodoAdd } from './TodoAdd';
+
+import './styles.css';
+
 
 const initialState = [{
     id: new Date().getTime(),
@@ -36,9 +39,11 @@ export const TodoApp = () => {
     // const [formValues, handleInputChange] = useForm({
     // handleInputChange se asigna mediante onChange el input 
     // const [{description}, handleInputChange] = useForm({
-    const [{ description }, handleInputChange, reset] = useForm({
-        description: ''
-    });
+
+    // Esto se va para el TodoApp por que pertenece a esed compoentn (Debio ser removido)
+    // const [{ description }, handleInputChange, reset] = useForm({
+    //     description: ''
+    // });
 
     // Lio que quiero hacer es grabar ene l localStorage cuando los todo Cambian, puedo usar un useEffect 
     useEffect(() => {
@@ -59,37 +64,46 @@ export const TodoApp = () => {
         dispatch({
             type: 'toggle',
             payload: todoId
-        })
+        });
+    }
+    // Esta se encarga de agregar el todo, lo que intersa que cuando se llamae esta function agrege el todo
+    // ESte es el quele voy a enviar a mi componetn TodoAdd 
+    const handleAddTodo = (newTodo) => {
+        dispatch({
+            type: 'add',
+            payload: newTodo
+        });
     }
 
     // console.log(formValues);
     // console.log(description);
     // Como hago para borrar el formulario , en el use form crear un metodo reset = () => 
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    // Esto tambien se fue para TodoAdd para manejarlo desde alla
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
 
-        if (description.trim().length <= 1) {
-            return;
-        }
+    //     if (description.trim().length <= 1) {
+    //         return;
+    //     }
 
-        const newTodo = {
-            id: new Date().getTime(),
-            desc: description,
-            // desc: 'Nueva Tarea',
-            done: false
-        };
+    //     const newTodo = {
+    //         id: new Date().getTime(),
+    //         desc: description,
+    //         // desc: 'Nueva Tarea',
+    //         done: false
+    //     };
 
-        const action = {
-            type: 'add',
-            payload: newTodo
-        }
+    //     const action = {
+    //         type: 'add',
+    //         payload: newTodo
+    //     }
 
-        // En el dispatch del useReducer es que se le manda la accion
-        dispatch(action);
-        // Y llamo el reset del useForm 
-        reset();
-    }
+    //     // En el dispatch del useReducer es que se le manda la accion
+    //     dispatch(action);
+    //     // Y llamo el reset del useForm 
+    //     reset();
+    // }
 
 
     return (
@@ -99,31 +113,16 @@ export const TodoApp = () => {
             <div className="row">
                 <div className="col-7">
                     {/* TodoList , argumentos: todos, handleDelete, handleToggle */}
-                    <TodoList 
-                        todos={todos} 
+                    <TodoList
+                        todos={todos}
                         handleDelete={handleDelete}
-                        handleToggle={ handleToggle}
-                        />
+                        handleToggle={handleToggle}
+                    />
                 </div>
                 <div className="col-5">
-                    <h4>Agregar Todo</h4>
-                    <hr />
-                    <form onSubmit={handleSubmit}>
-                        <input
-                            onChange={handleInputChange}
-                            value={description}
-                            type="text"
-                            name='description'
-                            className='form-control'
-                            placeholder='Aprender ...'
-                            autoComplete='off'
-                        />
-                        <button
-                            className='btn btn-outline-warning mt-1 btn-block'
-                        >
-                            Agregar
-                        </button>
-                    </form>
+                    <TodoAdd
+                        handleAddTodo={handleAddTodo}
+                    />
                 </div>
             </div>
 
