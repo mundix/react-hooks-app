@@ -1,5 +1,7 @@
 import React, { useReducer } from 'react';
 import { TodoReducer } from './TodoReducer';
+import { useForm } from '../../hooks/useForm';
+
 import './styles.css';
 
 const initialState = [{
@@ -8,6 +10,15 @@ const initialState = [{
     done: false
 }];
 
+const init = () => {
+    // Otra cosa que podemos hacer es guardar en el localStorage
+    return [{
+        id: new Date().getTime(),
+        desc: 'Aprender React',
+        done: false
+    }]
+}
+
 //El reducer puede crease en  un archivo independiente 'TodoReducer.js'
 
 export const TodoApp = () => {
@@ -15,14 +26,32 @@ export const TodoApp = () => {
     //reducer => es la function reducer, 
     //initialState es el valor inicial
     //el init es una function par ainiciarlizar el state en caso de que el state sea utuilizado , se puede memorizar 
-    const [todos, dispatch] = useReducer(TodoReducer, initialState);
+    // const [todos, dispatch] = useReducer(TodoReducer, initialState);
+    //Esta funcion init me va ayudar a ejecutar mas rapido, me va ayudar a computar todo y se define const init = () =>
+    const [todos, dispatch] = useReducer(TodoReducer, initialState, init);
+
+    // const [formValues, handleInputChange] = useForm({
+    // handleInputChange se asigna mediante onChange el input 
+    // const [{description}, handleInputChange] = useForm({
+    const [{ description }, handleInputChange, reset] = useForm({
+        description: ''
+    });
+
+    // console.log(formValues);
+    // console.log(description);
+    // Como hago para borrar el formulario , en el use form crear un metodo reset = () => 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
+
+        if (description.trim().length <= 1) {
+            return;
+        }
+
         const newTodo = {
             id: new Date().getTime(),
-            desc: 'Nueva Tarea',
+            desc: description,
+            // desc: 'Nueva Tarea',
             done: false
         };
 
@@ -33,6 +62,8 @@ export const TodoApp = () => {
 
         // En el dispatch del useReducer es que se le manda la accion
         dispatch(action);
+        // Y llamo el reset del useForm 
+        reset();
     }
 
 
@@ -63,6 +94,8 @@ export const TodoApp = () => {
                     <hr />
                     <form onSubmit={handleSubmit}>
                         <input
+                            onChange={handleInputChange}
+                            value={description}
                             type="text"
                             name='description'
                             className='form-control'
@@ -70,7 +103,7 @@ export const TodoApp = () => {
                             autoComplete='off'
                         />
                         <button
-                            className='btn btn-outline-primary mt-1 btn-block'
+                            className='btn btn-outline-warning mt-1 btn-block'
                         >
                             Agregar
                         </button>
