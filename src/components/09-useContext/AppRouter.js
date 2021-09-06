@@ -20,20 +20,20 @@ export const AppRouter = () => {
             <div>
 
                 <NavBar />
+                <div className="container">
+                    <Switch>
+                        <Route exact path='/' component={HomeScreen} />
 
-                <Switch>
-                    <Route exact path='/' component={HomeScreen} />
+                        <Route exact path='/about' component={AboutScreen} />
+                        <Route exact path='/login' component={LoginScreen} />
 
-                    <Route exact path='/about' component={AboutScreen} />
-                    <Route exact path='/login' component={LoginScreen} />
+                        {/* Estop es un default por si no encuentran nada, esto puede ser un 404 o se puede usar un redirect */}
+                        {/* <Router component={ HomeScreen }/> */}
+                        {/* Si no encuentra ninguna de estas direccion redirecciona al home  */}
+                        <Redirect to='/' />
 
-                    {/* Estop es un default por si no encuentran nada, esto puede ser un 404 o se puede usar un redirect */}
-                    {/* <Router component={ HomeScreen }/> */}
-                    {/* Si no encuentra ninguna de estas direccion redirecciona al home  */}
-                    <Redirect to='/'/>
-
-                </Switch>
-
+                    </Switch>
+                </div>
             </div>
         </Router>
     )
