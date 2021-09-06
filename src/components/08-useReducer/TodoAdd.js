@@ -23,6 +23,7 @@ export const TodoAdd = ({ handleAddTodo }) => {
         };
 
         // dispatch(action); //Este no es el dispach , con el handleADdtodo en ves del dispatch
+        // Esta funcion se llama desde el padre del component que recibe un newTodo, y se encarga de hacer el dispatch
         handleAddTodo(newTodo);
         reset();
     }
