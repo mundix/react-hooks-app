@@ -3,6 +3,7 @@ import { TodoReducer } from './TodoReducer';
 import { useForm } from '../../hooks/useForm';
 
 import './styles.css';
+import { TodoList } from './TodoList';
 
 const initialState = [{
     id: new Date().getTime(),
@@ -54,7 +55,7 @@ export const TodoApp = () => {
         dispatch(action);
     }
 
-    const handleToogle = (todoId) => {
+    const handleToggle = (todoId) => {
         dispatch({
             type: 'toggle',
             payload: todoId
@@ -97,29 +98,12 @@ export const TodoApp = () => {
             <hr />
             <div className="row">
                 <div className="col-7">
-                    <ul className='list-group list-group-flush'>
-                        {
-                            todos.map((todo, i) => (
-                                <li
-                                    key={todo.id}
-                                    className='list-group-item'
-                                >
-                                    <p
-                                        className={`${todo.done && 'complete'}`}
-                                        onClick={() => handleToogle(todo.id)}
-
-                                    > {i + 1} - {todo.desc}</p>
-                                    <button
-                                        className="btn btn-danger"
-                                        // Como necesito pasar argumento , se envia un callback y la funciona con el argumento
-                                        onClick={() => handleDelete(todo.id)}
-                                    >
-                                        Borrad
-                                    </button>
-                                </li>
-                            ))
-                        }
-                    </ul>
+                    {/* TodoList , argumentos: todos, handleDelete, handleToggle */}
+                    <TodoList 
+                        todos={todos} 
+                        handleDelete={handleDelete}
+                        handleToggle={ handleToggle}
+                        />
                 </div>
                 <div className="col-5">
                     <h4>Agregar Todo</h4>
