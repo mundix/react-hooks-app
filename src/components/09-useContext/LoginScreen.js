@@ -3,7 +3,7 @@ import { UserContext } from './UserContext'
 
 export const LoginScreen = () => {
     // 1 Obtebner referencia del userContext
-   const {user, setUser} = useContext(UserContext);
+   const {setUser} = useContext(UserContext);
     // console.log(context);
     // 2 setUser
 
