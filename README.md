@@ -1,5 +1,27 @@
 # Getting Started with Create React App
 
+
+Test library for react 17 
+Enzyme for React 17 
+https://www.npmjs.com/package/@wojtekmaj/enzyme-adapter-react-17
+
+Enzyme to Json 
+https://www.npmjs.com/package/enzyme-to-json
+
+Hook React Test
+https://react-hooks-testing-library.com/installation
+
+must create in the src/ a setupTests.js with this configuration: 
+
+- import Enzyme from 'enzyme';
+- import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
+- import {createSerializer} from 'enzyme-to-json';
+
+- Enzyme.configure({ adapter: new Adapter() });
+
+- expect.addSnapshotSerializer(createSerializer({mode: 'deep'}));
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
