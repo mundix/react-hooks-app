@@ -48,8 +48,7 @@ describe('Pruebas en useCounter', () => {
         const {decrement,reset} = result.current;
 
         act(()=>{
-            decrement();
-            decrement();
+            decrement(); //Esto se ejecuta una sola ves, aunque repita la funciona no decremente 2 veces 
             reset()
         });
 
