@@ -31,7 +31,6 @@ describe('Pruebas en useFetch', () => {
 
     test('Debe de maejar el error', async() => {
 
-        const counter = 1;
         const { result, waitForNextUpdate } = renderHook(() => useFetch(`https://reqres.in/apid/users?page=2`));
         await waitForNextUpdate();
         
