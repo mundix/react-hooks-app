@@ -22,10 +22,10 @@ describe('Pruebas en <TodoApp/>', () => {
         act(() => {
             // No funciona, da un errro con el useReducer
             wrapper.find('TodoAdd').prop('handleAddTodo')(demoTodo[0]);
-            // wrapper.find('TodoAdd').prop('handleAddTodo')(demoTodo[1]);
+            wrapper.find('TodoAdd').prop('handleAddTodo')(demoTodo[1]);
         });
 
-        // expect(wrapper.find('h1').text().trim()).toBe('TodoApp (2)');
+        expect(wrapper.find('h1').text().trim()).toBe('TodoApp (2)');
 
     });
 

@@ -1,11 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Pruebas en <TodoApp/> Debe Mostrarse correctamente 1`] = `
-<div>
+<Fragment>
   <h1>
-    TodoApp ( 
+    TodoApp (
     0
-     ) 
+    )
   </h1>
   <hr />
   <div
@@ -28,5 +28,5 @@ exports[`Pruebas en <TodoApp/> Debe Mostrarse correctamente 1`] = `
       />
     </div>
   </div>
-</div>
+</Fragment>
 `;
