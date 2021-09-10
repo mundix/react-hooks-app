@@ -8,6 +8,8 @@ describe('Pruebas en <TodoApp/>', () => {
 
     const wrapper = shallow(<TodoApp />);
 
+    Storage.prototype.setItem = jest.fn();
+
     test('Debe Mostrarse correctamente', () => {
         expect(wrapper).toMatchSnapshot();
     });
@@ -26,8 +28,18 @@ describe('Pruebas en <TodoApp/>', () => {
         });
 
         expect(wrapper.find('h1').text().trim()).toBe('TodoApp (2)');
-
+        expect(localStorage.setItem).toHaveBeenCalledTimes(2);
+        // expect(localStorage.setItem).toHaveBeenCalledWith({});
     });
+
+    test('Debe eliminar un TODO', () => {
+        // Llamo el agregar, y leugo borrarlo 
+       wrapper.find('TodoAdd').prop('handleAddTodo')(demoTodo[0]);
+    //    Ahora borramos el primero
+       wrapper.find('TodoList').prop('handleDelete')(demoTodo[0].id);
+       expect(wrapper.find('h1').text().trim()).toBe('TodoApp (0)');
+    });
+    
 
 });
 
